@@ -1,4 +1,4 @@
-package Laba1;
+package Laba0;
 
 import java.util.Scanner;
 
