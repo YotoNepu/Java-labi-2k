@@ -7,17 +7,18 @@ public class Task1 {
             "Обезьяны", "Курицы", "Собаки", "Свиньи"};
 
     public static void main(String[] args) {
-        int year = get_year();
+        Scanner scan = new Scanner(System.in);
+        int year = get_year(scan);
         System.out.printf("%d г. - год %s", year, ANIMALS[define_year(year)]);
     }
 
-    public static int get_year() {
+    public static int get_year(Scanner in) {
         int year_in;
         while (true) {
             System.out.print("Напишите какой-нибудь год: ");
-            Scanner scan = new Scanner(System.in);
-            if (scan.hasNextInt()) {year_in = scan.nextInt(); break;}
-            else {System.out.println("Ошибка. Вы ввели не год.");}
+            if (in.hasNextInt()) {year_in = in.nextInt(); break;}
+            System.out.println("Ошибка. Вы ввели не год.");
+            in.next();
         }
         return year_in;
     }
