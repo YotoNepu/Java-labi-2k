@@ -24,7 +24,6 @@ public class Task5 {
             in.next();
             System.out.println("Ошибка. Вы ввели не номер, или ввели его неверно.");
         }
-
         return number;
     }
 

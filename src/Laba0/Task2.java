@@ -23,7 +23,7 @@ public class Task2 {
             if (scan.hasNextFloat()) {area = scan.nextFloat(); break;}
             else {System.out.println("Ошибка. Вы ввели не число.");}
         }
-        if (area % 0.25f != 0) {area = area + (0.25f - area % 0.25f);}
+        if (area % 0.25f != 0) {area += (0.25f - area % 0.25f);}
         return area;
     }
 

@@ -12,7 +12,7 @@ public class Task3 {
     }
 
     public static float[] get_amount() {
-        float[] amount = {0, 0, 0, 0, 0};
+        float[] amount = new float[5];
         for (int i = 0; i != NAMES.length; i++) {
             System.out.printf("Сколько нам нужно купить %s?: ", NAMES[i]);
             Scanner scan = new Scanner(System.in);
