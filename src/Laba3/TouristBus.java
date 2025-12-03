@@ -15,7 +15,7 @@ class TouristBus {
     public TouristBus(int totalSeats, double seatPrice) {
         setTotalSeats(totalSeats);
         setSeatPrice(seatPrice);
-        this.occupiedSeats = 0;  // изначально автобус пустой
+        this.occupiedSeats = 0;
     }
 
     public TouristBus(TouristBus other) {

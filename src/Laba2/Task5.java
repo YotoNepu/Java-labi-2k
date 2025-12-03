@@ -23,8 +23,6 @@ public class Task5 {
     }
 
     public static void printMatrix(int[][] matrix) {
-        for (int[] intRow: matrix) {
-            for (int intCol: intRow) {
                 System.out.printf("%3d ", intCol);
             }
             System.out.println();
