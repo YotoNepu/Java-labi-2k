@@ -48,7 +48,7 @@ class SchoolStudent extends Student {
     }
 
     @Override
-    public boolean isEligibleForSpecialScholarship() {
+    public boolean canGiveSpecialScholarship() {
         String[] keySubjects = {"математика", "русский язык", "история", "английский язык"};
 
         for (String subject: keySubjects) {

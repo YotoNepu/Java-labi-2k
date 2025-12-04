@@ -56,7 +56,7 @@ public class Main {
 
         int scholarshipCount = 0;
         for (Student student: allStudents) {
-            if (student.isEligibleForSpecialScholarship()) {
+            if (student.canGiveSpecialScholarship()) {
                 scholarshipCount++;
                 System.out.println(scholarshipCount + ". " + student);
                 System.out.println();

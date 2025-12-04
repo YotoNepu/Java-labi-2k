@@ -31,7 +31,7 @@ class UniversityStudent extends Student {
     }
 
     @Override
-    public boolean isEligibleForSpecialScholarship() {
+    public boolean canGiveSpecialScholarship() {
         if (getAverageGrade() < 4.75) {
             return false;
         }

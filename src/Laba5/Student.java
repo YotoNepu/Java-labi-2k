@@ -11,7 +11,7 @@ abstract class Student {
         this.age = age;
     }
 
-    public abstract boolean isEligibleForSpecialScholarship();
+    public abstract boolean canGiveSpecialScholarship();
 
     public String getName() { return name; }
     public String getGender() { return gender; }
