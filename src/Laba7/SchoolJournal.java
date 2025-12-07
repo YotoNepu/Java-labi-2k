@@ -12,7 +12,6 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
 import java.util.HashMap;
-import java.util.Comparator;
 
 public class SchoolJournal {
     private Map<Integer, ClassGrade> classes;
@@ -95,7 +94,7 @@ public class SchoolJournal {
                 writer.println("\nСписок учеников:");
 
                 List<Student> sortedStudents = new ArrayList<>(classGrade.getStudents());
-                sortedStudents.sort(Comparator.comparing(Student::getLastName));
+                sortStudentsByLastName(sortedStudents);
 
                 for (Student student: sortedStudents) {
                     writer.println(student);
@@ -103,6 +102,24 @@ public class SchoolJournal {
             }
 
             System.out.println("-> Данные сохранены в файл: " + filename);
+        }
+    }
+
+    private void sortStudentsByLastName(List<Student> students) {
+        if (students == null || students.size() <= 1) {
+            return;
+        }
+
+        for (int i = 0; i < students.size() - 1; i++) {
+            for (int j = 0; j < students.size() - i - 1; j++) {
+                Student s1 = students.get(j);
+                Student s2 = students.get(j + 1);
+
+                if (s1.getLastName().compareTo(s2.getLastName()) > 0) {
+                    students.set(j, s2);
+                    students.set(j + 1, s1);
+                }
+            }
         }
     }
 
@@ -128,10 +145,19 @@ public class SchoolJournal {
 
         List<ClassGrade> sortedClasses = new ArrayList<>(classes.values());
 
-        sortedClasses.sort((c1, c2) ->
-                Double.compare(c2.getAverageMark(), c1.getAverageMark()));
+        for (int i = 0; i < sortedClasses.size() - 1; i++) {
+            for (int j = 0; j < sortedClasses.size() - i - 1; j++) {
+                ClassGrade class1 = sortedClasses.get(j);
+                ClassGrade class2 = sortedClasses.get(j + 1);
 
-        for (ClassGrade classGrade : sortedClasses) {
+                if (class2.getAverageMark() > class1.getAverageMark()) {
+                    sortedClasses.set(j, class2);
+                    sortedClasses.set(j + 1, class1);
+                }
+            }
+        }
+
+        for (ClassGrade classGrade: sortedClasses) {
             System.out.printf("Класс %2d: средний балл = %.2f%n", classGrade.getGradeNumber(),
                     classGrade.getAverageMark());
         }
@@ -154,7 +180,7 @@ public class SchoolJournal {
             return;
         }
 
-        studentsBySubject.sort(Comparator.comparing(Student::getLastName));
+        sortStudentsByLastName(studentsBySubject);
 
         for (Student student: studentsBySubject) {
             System.out.printf("%-20s (класс %2d) - оценка: %d%n",
@@ -187,7 +213,7 @@ public class SchoolJournal {
 
                 List<Student> subjectStudents = classGrade.getStudentsBySubject(subject);
 
-                subjectStudents.sort(Comparator.comparing(Student::getLastName));
+                sortStudentsByLastName(subjectStudents);
 
                 for (Student student : subjectStudents) {
                     writer.printf("  %s - оценка: %d%n",
