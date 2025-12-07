@@ -16,8 +16,8 @@ public class CometManager {
     public static void main(String[] args) {
         CometManager manager = new CometManager();
 
-        manager.getCometData("src/Indiv1/data_comets.csv");
-        manager.getCometData("src/Indiv1/data_comets_date.txt");
+        manager.getCometDataFromFile("src/Indiv1/data_comets.csv");
+        manager.getCometDataFromFile("src/Indiv1/data_comets_date.txt");
 
         manager.printAllComets();
         manager.printAllCometDates();
@@ -25,7 +25,7 @@ public class CometManager {
         manager.findCometsWithPerihelionDates();
     }
 
-    public void getCometData(String filepath) {
+    public void getCometDataFromFile(String filepath) {
         int lineCount = 0;
         int errorCount = 0;
 
@@ -200,7 +200,7 @@ public class CometManager {
         for (Comet comet: comets) {
             System.out.println(comet);
         }
-        System.out.println("\n------------------------------------");
+        System.out.println("------------------------------------");
     }
 
     public void printAllCometDates() {
@@ -209,6 +209,6 @@ public class CometManager {
         for (CometDateInfo dateInfo : cometDateInfos) {
             System.out.println(dateInfo);
         }
-        System.out.println("\n------------------------------------");
+        System.out.println("------------------------------------");
     }
 }
