@@ -1,5 +1,7 @@
 package Laba8;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -12,6 +14,7 @@ public class Main {
         task4(scanner);
         task5(scanner);
         task6(scanner);
+        task7(scanner);
     }
 
     public static String getData(Scanner sc, String msg) {
@@ -145,5 +148,30 @@ public class Main {
                 System.out.println(sentence);
             }
         }
+    }
+
+    // Даров, ты вчера ел кукурузу, или ты просто не в теме
+    public static void task7(Scanner scan) {
+        String telegram = getData(scan, "\nВведите текст телеграммы: ");
+        String comma;
+        char firstSymbol = telegram.charAt(0);
+
+        if ((firstSymbol >= 'А' && firstSymbol <= 'я') || firstSymbol == 'Ё' || firstSymbol == 'ё') {
+            comma = " зпт";
+        }
+        else {comma = " comma";}
+        telegram = telegram.replaceAll(",", comma);
+
+        String[] words = telegram.split(" ");
+        StringBuilder result = new StringBuilder();
+        int money = 0;
+        for (String word: words) {
+            if (word.length() > 2) {
+                result.append(" ").append(word);
+                money += 10;
+            }
+        }
+
+        System.out.printf("Телеграмма \"%s\" будет стоить - %d руб.", result.deleteCharAt(0), money);
     }
 }
