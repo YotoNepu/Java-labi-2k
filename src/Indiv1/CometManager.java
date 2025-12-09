@@ -1,6 +1,6 @@
 package Indiv1;
 
-import java.io.BufferedReader;
+import java.util.Scanner;
 import java.io.FileReader;
 import java.io.IOException;
 import java.time.LocalDate;
@@ -29,14 +29,14 @@ public class CometManager {
         int lineCount = 0;
         int errorCount = 0;
 
-        try (BufferedReader br = new BufferedReader(new FileReader(filepath))) {
+        try (Scanner sc = new Scanner(new FileReader(filepath))) {
             if (filepath.endsWith(".csv")) {
                 System.out.println("\nПолучение данных о кометах...");
-                errorCount = readCometsInfos(br, errorCount, lineCount);
+                errorCount = readCometsInfos(sc, errorCount, lineCount);
             }
             else if (filepath.endsWith(".txt")) {
                 System.out.println("\nПолучение данных о дате прохождения перигелия...");
-                errorCount = readCometDates(br, errorCount, lineCount);
+                errorCount = readCometDates(sc, errorCount, lineCount);
             }
             else {
                 throw new IllegalArgumentException("Ошибка. указан неверный файл.");
@@ -52,10 +52,11 @@ public class CometManager {
         }
     }
 
-    public int readCometsInfos(BufferedReader br, int errorCount, int lineCount) throws IOException {
+    public int readCometsInfos(Scanner sc, int errorCount, int lineCount) throws IOException {
         String line;
 
-        while ((line = br.readLine()) != null) {
+        while (sc.hasNextLine()) {
+            line = sc.nextLine();
             lineCount++;
 
             try {
@@ -110,10 +111,11 @@ public class CometManager {
         return result.toArray(new String[0]);
     }
 
-    public int readCometDates(BufferedReader br, int errorCount, int lineCount) throws IOException {
+    public int readCometDates(Scanner sc, int errorCount, int lineCount) throws IOException {
         String line;
 
-        while ((line = br.readLine()) != null) {
+        while (sc.hasNextLine()) {
+            line = sc.nextLine();
             lineCount++;
 
             try {
@@ -155,7 +157,7 @@ public class CometManager {
 
         int foundCount = 0;
 
-        for (CometDateInfo dateInfo : cometDateInfos) {
+        for (CometDateInfo dateInfo: cometDateInfos) {
             Comet foundComet = null;
             String searchNumber = dateInfo.getNumber();
 
