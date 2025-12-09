@@ -1,7 +1,5 @@
 package Laba8;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -57,10 +55,10 @@ public class Main {
             }
         }
 
-        System.out.printf("Расшифрованный текст: %s%n", result.toString());
+        System.out.printf("Расшифрованный текст: %s%n", result);
     }
 
-    // Вот что я скажу: я по лесу иду (не один), я "шутки шучу" и... деревья пилю!?
+    // Вот что я скажу: я по лесу иду (не один), я "шутки шучу" и... деревья пилю?!
     public static void task3(Scanner scan) {
         String txt = getData(scan, "\nВведите предложение: ");
 
