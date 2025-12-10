@@ -32,7 +32,7 @@ public class Main {
     public static void task1(Scanner scan) {
         String txt = getData(scan, "\nВведите слово: ");
 
-        String result = txt.replaceAll("[A-ZА-Я]", "");
+        String result = txt.replaceAll("[A-ZА-ЯЁ]", "");
 
         System.out.printf("Результат: %s%n", result);
     }
